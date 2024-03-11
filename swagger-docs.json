@@ -1,0 +1,105 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Cars API",
+		"description": "Challenge 3 Restful API"
+	},
+	"host": "localhost:2000",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "cars",
+			"description": "Cars API Challenge 3"
+		}
+	],
+	"schemes": ["http"],
+	"paths": {
+		"/": {
+			"get": {
+				"description": "root api",
+				"responses": {
+					"200": {
+						"description": "Ping Successfully"
+					}
+				}
+			}
+		},
+		"/cars": {
+			"get": {
+				"description": "list all of cars",
+				"tags": ["cars"],
+				"responses": {
+					"200": {
+						"description": "List all of cars"
+					}
+				}
+			}
+		},
+		"/cars/create": {
+			"post": {
+				"tags": ["cars"],
+				"description": "create new car",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"type": "array",
+							"required": ["id", "capacity", "rentPerDay", "availableAt", "type", "manufacture", "description", "available", "model"],
+							"properties": {
+								"id": {
+									"type": "string",
+									"format": "uuid",
+									"description": "Auto Generated ID"
+								},
+								"capacity": {
+									"type": "number",
+									"description": "Car Capacity"
+								},
+								"rentPerDay": {
+									"type": "number",
+									"description": "Car Rent Cost"
+								},
+								"availableAt": {
+									"type": "string",
+									"description": "Car availableAt (date time)"
+								},
+								"available": {
+									"type": "boolean",
+									"description": "Car Available"
+								},
+								"manufacture": {
+									"type": "string",
+									"description": "Car Manufacture"
+								},
+								"type": {
+									"type": "string",
+									"description": "Car Type"
+								},
+								"description": {
+									"type": "string",
+									"description": "Car Description"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		}
+	}
+}
