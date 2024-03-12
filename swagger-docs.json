@@ -45,17 +45,40 @@
 						"name": "body",
 						"in": "body",
 						"schema": {
-							"type": "array",
-							"required": ["id", "capacity", "rentPerDay", "availableAt", "type", "manufacture", "description", "available", "model"],
+							"type": "object",
 							"properties": {
 								"id": {
 									"type": "string",
 									"format": "uuid",
 									"description": "Auto Generated ID"
 								},
+								"plate": {
+									"type": "string",
+									"description": "Car Plate"
+								},
+								"image": {
+									"type": "string",
+									"description": "Car Image"
+								},
 								"capacity": {
 									"type": "number",
 									"description": "Car Capacity"
+								},
+								"manufacture": {
+									"type": "string",
+									"description": "Car Manufacture"
+								},
+								"type": {
+									"type": "string",
+									"description": "Car Type"
+								},
+								"year": {
+									"type": "string",
+									"description": "Car Year"
+								},
+								"description": {
+									"type": "string",
+									"description": "Car Description"
 								},
 								"rentPerDay": {
 									"type": "number",
@@ -69,20 +92,49 @@
 									"type": "boolean",
 									"description": "Car Available"
 								},
-								"manufacture": {
+								"transmission": {
 									"type": "string",
-									"description": "Car Manufacture"
+									"description": "Car Transmission"
 								},
-								"type": {
-									"type": "string",
-									"description": "Car Type"
+								"options": {
+									"type": "array",
+									"description": "Car Option"
 								},
-								"description": {
-									"type": "string",
-									"description": "Car Description"
+								"specs": {
+									"type": "array",
+									"description": "Car Specification"
 								}
 							}
 						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/cars/detail/{id}": {
+			"get": {
+				"tags": ["cars"],
+				"description": "Get Car By ID",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"type": "string",
+						"required": true,
+						"format": "uuid"
 					}
 				],
 				"responses": {
