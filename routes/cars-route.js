@@ -4,9 +4,9 @@ const { getAllCars, getCarsById, createCar, updateCar, deleteCar } = require('..
 const router = express.Router();
 
 router.get('/', getAllCars);
-router.get('/detail/:id', getCarsById);
-router.post('/create', createCar);
-router.put('/update/:id', updateCar);
-router.delete('/delete/:id', deleteCar);
+router.get('/:id', getCarsById);
+router.post('/', createCar);
+router.put('/:id', updateCar);
+router.delete('/:id', deleteCar);
 
 module.exports = router;

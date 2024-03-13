@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const carsRoute = require('./routes/cars-route');
 const path = require('path');
-const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-docs.json');
 
@@ -24,6 +23,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
 	res.status(200).json({
 		message: 'Ping Successfully',
+		docs: `http://localhost:${PORT}/api-docs`,
 	});
 });
 
